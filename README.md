@@ -25,6 +25,8 @@ colorprint("Hello World!", fg=FG_GREEN)
 colorprint("Hello World!", bg=BG_GREEN)
 ```
 
+<img src="output1.png" width=180px>
+
 You can use it just like ```print()```.
 
 ```python
@@ -51,6 +53,8 @@ config(fg=FG_GREEN)
 colorprint("Hello World!")
 colorprint("Hello World!", fg=FG_RED)
 ```
+
+<img src="output2.png" width=180px>
 
 ## Bugs/Feature requests
 
