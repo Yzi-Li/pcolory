@@ -6,7 +6,7 @@ from typing import Dict, List
 
 
 class Color:
-    def __init__(self, code: str,
+    def __init__(self, code: int,
                  is_bg: bool = False,
                  bright: bool = False):
         base: int = 30  # foreground colors
@@ -30,7 +30,7 @@ color_names: List[str] = [
     "WHITE"
 ]
 
-COLORS: Dict[str, Color] = {}
+COLORS: Dict[str, str] = {}
 
 for i, name in enumerate(color_names):
     COLORS[f"FG_{name}"] = Color(i).code

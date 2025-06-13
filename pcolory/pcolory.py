@@ -32,12 +32,14 @@ class ColorPrint:
         print(code, end="")
         print(*values, sep=sep, end="")
 
+        if end is None:
+            end = "\n"
         for i in end.splitlines():
             print(f"{i}{RESET}\n{code}", end="")
         print(RESET, end="")
 
-    def config(self, cfg: Dict[str, bool] = None, **kwargs):
-        if cfg is not None:
+    def config(self, cfg: Dict[str, bool] = {}, **kwargs):
+        if isinstance(cfg, dict):
             for key, val in cfg.items():
                 self._config.__setattr__(key, val)
 
