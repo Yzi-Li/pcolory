@@ -10,6 +10,19 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
 dynamic = ["version"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+Homepage = "https://github.com/Yzi-Li/pcolory"
 
 [tool.setuptools.dynamic]
 version = {attr = "pcolory.__version__"}

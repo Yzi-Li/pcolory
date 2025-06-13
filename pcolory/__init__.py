@@ -4,13 +4,13 @@
 
 from .pcolory import ColorPrint
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = [
     "cp",
     "colorprint",
     "config"
-    ]
+]
 
 _colorprint = ColorPrint()
 cp = colorprint = _colorprint
