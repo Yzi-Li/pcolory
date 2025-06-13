@@ -10,7 +10,7 @@ __all__ = [
     "cp",
     "colorprint",
     "config"
-    ]
+]
 
 _colorprint = ColorPrint()
 cp = colorprint = _colorprint
