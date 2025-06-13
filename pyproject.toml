@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pcolory"
+authors = [{name = "Yongzi Li", email = "1538321957@qq.com"}]
+description = "A library that can make print() colorful."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = {attr = "pcolory.__version__"}
