@@ -58,4 +58,4 @@ colorprint("Hello World!", fg=FG_RED)
 
 ## Bugs/Feature requests
 
-Please send a bug report or feature requests through github issue tracer.
+Please send a bug report or feature requests through [github issue tracer](https://github.com/Yzi-Li/pcolory/issues).
