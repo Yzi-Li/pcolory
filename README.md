@@ -24,8 +24,6 @@ from pcolory import colorprint
 colorprint("Hello World!", fg=FG_GREEN)
 colorprint("Hello World!", bg=BG_GREEN)
 ```
-#### PowerShell Output
-<span style="color: #13A10E; font-family: 'Consolas', 'Courier New', monospace; font-size: 1em; font-weight: normal;">Hello World!</span> <br> <span style="background-color: #13A10E; font-family: 'Consolas', 'Courier New', monospace; font-size: 1em; font-weight: normal;">Hello World!</span>
 
 You can use it just like ```print()```.
 
@@ -53,8 +51,6 @@ config(fg=FG_GREEN)
 colorprint("Hello World!")
 colorprint("Hello World!", fg=FG_RED)
 ```
-
-<span style="color: #13A10E; font-family: 'Consolas', 'Courier New', monospace; font-size: 1em; font-weight: normal;">Hello World!</span> <br> <span style="color: #C50F1F; font-family: 'Consolas', 'Courier New', monospace; font-size: 1em; font-weight: normal;">Hello World!</span>
 
 ## Bugs/Feature requests
 
