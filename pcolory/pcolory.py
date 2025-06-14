@@ -34,9 +34,13 @@ class ColorPrint:
 
         if end is None:
             end = "\n"
-        for i in end.splitlines():
-            print(f"{i}{RESET}\n{code}", end="")
-        print(RESET, end="")
+        end_list = end.splitlines()
+
+        for i, val in enumerate(end_list):
+            if i < len(end_list) - 1:
+                print(f"{i}{RESET}\n{code}", end="")
+            else:
+                print(val, end=RESET)
 
     def config(self, cfg: Dict[str, bool] = {}, **kwargs):
         if isinstance(cfg, dict):
