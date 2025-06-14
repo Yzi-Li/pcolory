@@ -24,6 +24,9 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/Yzi-Li/pcolory"
 
+[tool.setuptools]
+include-package-data = true
+
 [tool.setuptools.dynamic]
 version = {attr = "pcolory.__version__"}
 
