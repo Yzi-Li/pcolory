@@ -34,10 +34,10 @@ class ColorPrint:
 
         if end is None:
             end = "\n"
-        end = end.splitlines()
+        end_list = end.splitlines()
 
-        for i, val in enumerate(end):
-            if i < len(end) - 1:
+        for i, val in enumerate(end_list):
+            if i < len(end_list) - 1:
                 print(f"{i}{RESET}\n{code}", end="")
             else:
                 print(val, end=RESET)
