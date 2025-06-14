@@ -28,4 +28,4 @@ Homepage = "https://github.com/Yzi-Li/pcolory"
 version = {attr = "pcolory.__version__"}
 
 [tool.setuptools.packages.find]
-include = ["./docs/images/*"]
+include = ["docs/images/*"]
