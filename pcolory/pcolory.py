@@ -19,8 +19,8 @@ class ColorPrint:
     def __call__(self, *values: object,
                  fg: Color | str = "",
                  bg: Color | str = "",
-                 sep: str | None = "",
-                 end: str | None = "\n"):
+                 sep: str | None = None,
+                 end: str | None = None):
         if not self._config.enable:
             print(*values, sep=sep, end=end)
             return
@@ -33,12 +33,14 @@ class ColorPrint:
         print(*values, sep=sep, end="")
 
         if end is None:
-            end = "\n"
+            print(f"{RESET}\n", end="")
+            return
+
         end_list = end.splitlines()
 
         for i, val in enumerate(end_list):
             if i < len(end_list) - 1:
-                print(f"{i}{RESET}\n{code}", end="")
+                print(f"{val}{RESET}\n{code}", end="")
             else:
                 print(val, end=RESET)
 

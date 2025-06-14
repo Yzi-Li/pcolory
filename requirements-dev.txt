@@ -1,3 +1,9 @@
-build
+# Lint
 flake8
 mypy
+
+# Build & Coverage
+build
+setuptools
+wheel
+coverage
