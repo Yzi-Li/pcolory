@@ -29,5 +29,5 @@ include-package-data = true
 [tool.setuptools.dynamic]
 version = {attr = "pcolory.__version__"}
 
-[tool.setuptools.packages.find]
-include = ["docs/images/*"]
+[tool.setuptools.package-data]
+"*" = ["../docs/images/*"]
