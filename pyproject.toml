@@ -26,3 +26,6 @@ Homepage = "https://github.com/Yzi-Li/pcolory"
 
 [tool.setuptools.dynamic]
 version = {attr = "pcolory.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["./docs/images/*"]
