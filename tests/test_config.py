@@ -6,43 +6,39 @@ import io
 from contextlib import redirect_stdout
 
 from .colorprinttest import ColorPrintTest
-from pcolory import colorprint
+from pcolory import config, colorprint
 from pcolory.colors import FG_BLACK, BG_RED, RESET
 
 
-class TestColorPrint(ColorPrintTest):
-    def test_colorprint(self):
+class TestConfig(ColorPrintTest):
+    def test_enable(self):
         with io.StringIO() as buf, redirect_stdout(buf):
+            config(enable=False)
             colorprint("Hello, World!", fg=FG_BLACK, bg=BG_RED)
             out = buf.getvalue()
-        self.assertIn(FG_BLACK, out)
-        self.assertIn(BG_RED, out)
-        self.assertIn("Hello, World!", out)
-        self.assertTrue(out.rstrip().endswith(RESET))
+        self.assertEqual(out, "Hello, World!\n")
 
-    def test_multiple(self):
         with io.StringIO() as buf, redirect_stdout(buf):
-            colorprint("Hello,", "World!", fg=FG_BLACK, bg=BG_RED)
+            config({"enable": False})
+            colorprint("Hello, World!", fg=FG_BLACK, bg=BG_RED)
             out = buf.getvalue()
-        self.assertIn("Hello,", out)
-        self.assertIn("World!", out)
-        self.assertIn(FG_BLACK, out)
-        self.assertIn(BG_RED, out)
-        self.assertTrue(out.rstrip().endswith(RESET))
+        self.assertEqual(out, "Hello, World!\n")
 
-    def test_sep_end(self):
+    def test_fg_bg(self):
         with io.StringIO() as buf, redirect_stdout(buf):
-            colorprint("Hello", "World!", fg=FG_BLACK, bg=BG_RED, sep=", ", end="!")
+            config(fg=FG_BLACK, bg=BG_RED)
+            colorprint("Hello, World!")
             out = buf.getvalue()
+        self.assertTrue(out.rstrip().endswith(RESET))
         self.assertIn("Hello, World!", out)
         self.assertIn(FG_BLACK, out)
         self.assertIn(BG_RED, out)
-        self.assertTrue(out.rstrip().endswith(RESET))
 
         with io.StringIO() as buf, redirect_stdout(buf):
-            colorprint("Hello", "World!", fg=FG_BLACK, bg=BG_RED, sep=", ", end=None)
+            config({"fg": FG_BLACK, "bg": BG_RED})
+            colorprint("Hello, World!")
             out = buf.getvalue()
+        self.assertTrue(out.rstrip().endswith(RESET))
         self.assertIn("Hello, World!", out)
         self.assertIn(FG_BLACK, out)
         self.assertIn(BG_RED, out)
-        self.assertTrue(out.rstrip().endswith(RESET))
