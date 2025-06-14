@@ -9,40 +9,29 @@ from .colorprinttest import ColorPrintTest
 from pcolory import colorprint
 from pcolory.colors import FG_BLACK, BG_RED, RESET
 
+fg = FG_BLACK
+bg = BG_RED
 
 class TestColorPrint(ColorPrintTest):
     def test_colorprint(self):
         with io.StringIO() as buf, redirect_stdout(buf):
-            colorprint("Hello, World!", fg=FG_BLACK, bg=BG_RED)
+            colorprint("Hello, World!", fg=fg, bg=bg)
             out = buf.getvalue()
-        self.assertIn(FG_BLACK, out)
-        self.assertIn(BG_RED, out)
-        self.assertIn("Hello, World!", out)
-        self.assertTrue(out.rstrip().endswith(RESET))
+        self.assertEqual(f"{fg}{bg}Hello, World!{RESET}\n", out)
 
     def test_multiple(self):
         with io.StringIO() as buf, redirect_stdout(buf):
-            colorprint("Hello,", "World!", fg=FG_BLACK, bg=BG_RED)
+            colorprint("Hello,", "World!", fg=fg, bg=bg)
             out = buf.getvalue()
-        self.assertIn("Hello,", out)
-        self.assertIn("World!", out)
-        self.assertIn(FG_BLACK, out)
-        self.assertIn(BG_RED, out)
-        self.assertTrue(out.rstrip().endswith(RESET))
+        self.assertEqual(f"{fg}{bg}Hello, World!{RESET}\n", out)
 
     def test_sep_end(self):
         with io.StringIO() as buf, redirect_stdout(buf):
-            colorprint("Hello", "World!", fg=FG_BLACK, bg=BG_RED, sep=", ", end="!")
+            colorprint("Hello", "World", fg=fg, bg=bg, sep=", ", end="!\n!")
             out = buf.getvalue()
-        self.assertIn("Hello, World!", out)
-        self.assertIn(FG_BLACK, out)
-        self.assertIn(BG_RED, out)
-        self.assertTrue(out.rstrip().endswith(RESET))
+        self.assertEqual(f"{fg}{bg}Hello, World!{RESET}\n{fg}{bg}!{RESET}", out)
 
         with io.StringIO() as buf, redirect_stdout(buf):
-            colorprint("Hello", "World!", fg=FG_BLACK, bg=BG_RED, sep=", ", end=None)
+            colorprint("Hello", "World!", fg=fg, bg=bg, sep=", ", end=None)
             out = buf.getvalue()
-        self.assertIn("Hello, World!", out)
-        self.assertIn(FG_BLACK, out)
-        self.assertIn(BG_RED, out)
-        self.assertTrue(out.rstrip().endswith(RESET))
+        self.assertEqual(f"{fg}{bg}Hello, World!{RESET}\n", out)

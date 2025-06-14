@@ -9,36 +9,32 @@ from .colorprinttest import ColorPrintTest
 from pcolory import config, colorprint
 from pcolory.colors import FG_BLACK, BG_RED, RESET
 
+fg = FG_BLACK
+bg = BG_RED
 
 class TestConfig(ColorPrintTest):
     def test_enable(self):
         with io.StringIO() as buf, redirect_stdout(buf):
             config(enable=False)
-            colorprint("Hello, World!", fg=FG_BLACK, bg=BG_RED)
+            colorprint("Hello, World!", fg=fg, bg=bg)
             out = buf.getvalue()
-        self.assertEqual(out, "Hello, World!\n")
+        self.assertEqual("Hello, World!\n", out)
 
         with io.StringIO() as buf, redirect_stdout(buf):
             config({"enable": False})
-            colorprint("Hello, World!", fg=FG_BLACK, bg=BG_RED)
+            colorprint("Hello, World!", fg=fg, bg=bg)
             out = buf.getvalue()
-        self.assertEqual(out, "Hello, World!\n")
+        self.assertEqual("Hello, World!\n", out)
 
     def test_fg_bg(self):
         with io.StringIO() as buf, redirect_stdout(buf):
-            config(fg=FG_BLACK, bg=BG_RED)
+            config(fg=fg, bg=bg)
             colorprint("Hello, World!")
             out = buf.getvalue()
-        self.assertTrue(out.rstrip().endswith(RESET))
-        self.assertIn("Hello, World!", out)
-        self.assertIn(FG_BLACK, out)
-        self.assertIn(BG_RED, out)
+        self.assertEqual(f"{fg}{bg}Hello, World!{RESET}\n", out)
 
         with io.StringIO() as buf, redirect_stdout(buf):
-            config({"fg": FG_BLACK, "bg": BG_RED})
+            config({"fg": fg, "bg": bg})
             colorprint("Hello, World!")
             out = buf.getvalue()
-        self.assertTrue(out.rstrip().endswith(RESET))
-        self.assertIn("Hello, World!", out)
-        self.assertIn(FG_BLACK, out)
-        self.assertIn(BG_RED, out)
+        self.assertEqual(f"{fg}{bg}Hello, World!{RESET}\n", out)
