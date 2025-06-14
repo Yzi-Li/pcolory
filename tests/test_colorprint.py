@@ -12,6 +12,7 @@ from pcolory.colors import FG_BLACK, BG_RED, RESET
 fg = FG_BLACK
 bg = BG_RED
 
+
 class TestColorPrint(ColorPrintTest):
     def test_colorprint(self):
         with io.StringIO() as buf, redirect_stdout(buf):
