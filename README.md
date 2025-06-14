@@ -1,5 +1,7 @@
 # pcolory
 
+[![pypi](https://img.shields.io/pypi/v/pcolory.svg)](https://pypi.org/project/pcolory/) [![support-version](https://img.shields.io/pypi/pyversions/pcolory)](https://img.shields.io/pypi/pyversions/pcolory) [![license](https://img.shields.io/github/license/Yzi-Li/pcolory)](https://github.com/Yzi-Li/pcolory/blob/main/LICENSE)
+
 A library that can make ```print()``` colorful.
 
 ## Why it called ```pcolory```?
