@@ -15,6 +15,7 @@ class Color:
         if bright:
             base += 60  # bright colors
         self.code = f"\033[{base + code}m"
+        self.is_bg = is_bg
 
 
 RESET = Color(-30).code  # \033[0m
@@ -30,13 +31,13 @@ color_names: List[str] = [
     "WHITE"
 ]
 
-COLORS: Dict[str, str] = {}
+COLORS: Dict[str, Color] = {}
 
 for i, name in enumerate(color_names):
-    COLORS[f"FG_{name}"] = Color(i).code
-    COLORS[f"FG_BRIGHT_{name}"] = Color(i, bright=True).code
-    COLORS[f"BG_{name}"] = Color(i, is_bg=True).code
-    COLORS[f"BG_BRIGHT_{name}"] = Color(i, True, True).code
+    COLORS[f"FG_{name}"] = Color(i)
+    COLORS[f"FG_BRIGHT_{name}"] = Color(i, bright=True)
+    COLORS[f"BG_{name}"] = Color(i, is_bg=True)
+    COLORS[f"BG_BRIGHT_{name}"] = Color(i, True, True)
 
 # Foreground colors
 FG_BLACK = COLORS["FG_BLACK"]
