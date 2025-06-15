@@ -1,6 +1,6 @@
-.PHONY: refresh lint install test codecov clean
+.PHONY: refresh build lint install test codecov clean
 
-refresh: clean build install lint
+refresh: clean build lint install test codecov
 
 build:
 	python -m build
@@ -30,4 +30,8 @@ clean:
 	rm -rf build
 	rm -rf dist
 	rm -rf pcolory.egg-info
+	rm -rf .mypy_cache
+	rm -rf .pytest_cache
+	rm -rf .coverage
+	rm -rf coverage.xml
 	pip uninstall -y pcolory
