@@ -11,6 +11,8 @@ from pcolory.colors import FG_BLACK, BG_RED, RESET
 
 fg = FG_BLACK
 bg = BG_RED
+fg_code = fg.code
+bg_code = bg.code
 
 
 class TestConfig(ColorPrintTest):
@@ -32,10 +34,10 @@ class TestConfig(ColorPrintTest):
             config(fg=fg, bg=bg)
             colorprint("Hello, World!")
             out = buf.getvalue()
-        self.assertEqual(f"{fg}{bg}Hello, World!{RESET}\n", out)
+        self.assertEqual(f"{fg_code}{bg_code}Hello, World!{RESET}\n", out)
 
         with io.StringIO() as buf, redirect_stdout(buf):
             config({"fg": fg, "bg": bg})
             colorprint("Hello, World!")
             out = buf.getvalue()
-        self.assertEqual(f"{fg}{bg}Hello, World!{RESET}\n", out)
+        self.assertEqual(f"{fg_code}{bg_code}Hello, World!{RESET}\n", out)

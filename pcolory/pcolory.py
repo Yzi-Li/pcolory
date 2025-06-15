@@ -8,8 +8,8 @@ from .colors import Color, RESET
 
 class Config:
     enable: bool = True
-    fg: Color | str = ""
-    bg: Color | str = ""
+    fg: Color | None = None
+    bg: Color | None = None
 
 
 class ColorPrint:
@@ -17,17 +17,22 @@ class ColorPrint:
         self._config = Config()
 
     def __call__(self, *values: object,
-                 fg: Color | str = "",
-                 bg: Color | str = "",
+                 fg: Color | None = None,
+                 bg: Color | None = None,
                  sep: str | None = None,
                  end: str | None = None):
         if not self._config.enable:
             print(*values, sep=sep, end=end)
             return
 
-        fg = fg or self._config.fg
-        bg = bg or self._config.bg
-        code = f"{fg}{bg}"
+        if fg is not None and fg.is_bg:
+            raise ValueError("fg must be foreground color, not background color.")
+        if bg is not None and not bg.is_bg:
+            raise ValueError("bg must be background color, not foreground color.")
+
+        fg_code: str = "" if fg is None and self._config.fg is None else (fg or self._config.fg).code
+        bg_code: str = "" if bg is None and self._config.bg is None else (bg or self._config.bg).code
+        code = f"{fg_code}{bg_code}"
 
         print(code, end="")
         print(*values, sep=sep, end="")
