@@ -4,6 +4,7 @@ coverage:
       default:
         target: 100%
         threshold: 0%
+        base: main
     patch:
       default:
         target: 100%
@@ -16,5 +17,3 @@ comment:
   require_base: false
   require_head: true
   hide_project_coverage: false
-  show_carryforward_flags: true
-  show_carryforward_flags: true
