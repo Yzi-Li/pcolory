@@ -43,6 +43,3 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage.xml
-        flags: project, patch
-        fail_ci_if_error: false
-        verbose: true
