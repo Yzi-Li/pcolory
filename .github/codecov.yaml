@@ -12,6 +12,8 @@ coverage:
         base: auto
 
 comment:
+  behavior: default
   layout: "reach, diff, flags, files"
   require_base: true
   require_head: true
+  require_changes: false
