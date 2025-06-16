@@ -1,0 +1,28 @@
+name: Feature or enhancement
+description: Submit a feature request or enhancement
+labels: ["feature"]
+
+body:
+  - type: markdown
+    attributes:
+      value: "# Feature or enhancement\n"
+
+  - type: textarea
+    attributes:
+      label: "Bug description"
+      description: A clear and concise description of what the feature is.
+      value: "### Bug description\n"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: "Why is this needed"
+      description: A clear and concise description of why we need this feature.
+      value: "### Why is this needed\n"
+
+  - type: textarea
+    attributes:
+      label: "Previous discussion"
+      description: Link to related issue/PR (if applicable).
+      value: "### Previous discussion\n"
