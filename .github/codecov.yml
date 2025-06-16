@@ -4,15 +4,13 @@ coverage:
       default:
         target: 100%
         threshold: 0%
-        base: auto
     patch:
       default:
         target: 100%
         threshold: 0%
-        base: auto
 
 comment:
-  layout: " diff, flags, files"
+  layout: "diff, flags, files"
   behavior: default
   require_changes: false 
   require_base: false
