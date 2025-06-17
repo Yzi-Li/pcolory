@@ -3,28 +3,38 @@ description: Submit a bug report
 labels: ["bug"]
 
 body:
-  - type: markdown
-    attributes:
-      value: "# Bug report\n"
-
   - type: textarea
+    id: "description"
     attributes:
       label: "Bug description"
       description: A clear and concise description of what happened.
-      value: "### Bug description\n"
     validations:
       required: true
 
   - type: textarea
+    id: "steps"
     attributes:
       label: "Steps to reproduce"
       description: Steps to reproduce the behavior.
-      value: "### Steps to reproduce\n"
 
   - type: textarea
+    id: "expected"
     attributes:
       label: "Expected behavior"
       description: A clear and concise description of what you expected to happen.
-      value: "### Expected behavior\n"
     validations:
       required: true
+
+  - type: hidden
+    attributes:
+      value: |
+        # Bug report
+
+        ### Bug description
+        {{ description }}
+
+        ### Steps to reproduce
+        {{ steps }}
+
+        ### Expected behavior
+        {{ expected }}
