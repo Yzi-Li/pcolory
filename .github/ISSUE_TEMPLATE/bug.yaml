@@ -4,7 +4,6 @@ labels: ["bug"]
 
 body:
   - type: textarea
-    id: "description"
     attributes:
       label: "Bug description"
       description: A clear and concise description of what happened.
@@ -12,29 +11,13 @@ body:
       required: true
 
   - type: textarea
-    id: "steps"
     attributes:
       label: "Steps to reproduce"
       description: Steps to reproduce the behavior.
 
   - type: textarea
-    id: "expected"
     attributes:
       label: "Expected behavior"
       description: A clear and concise description of what you expected to happen.
     validations:
       required: true
-
-  - type: hidden
-    attributes:
-      value: |
-        # Bug report
-
-        ### Bug description
-        {{ description }}
-
-        ### Steps to reproduce
-        {{ steps }}
-
-        ### Expected behavior
-        {{ expected }}
