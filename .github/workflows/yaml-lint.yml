@@ -2,8 +2,10 @@ name: YAML lint
 
 on:
   push:
+    branches: [ main ]
     paths: [ "**.yml", "**.yaml" ]
   pull_request:
+    branches: [ main ]
     paths: [ "**.yml", "**.yaml" ]
 
 jobs:
