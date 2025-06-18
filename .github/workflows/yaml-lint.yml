@@ -2,9 +2,9 @@ name: YAML lint
 
 on:
   push:
-    paths: [ "*.yml", "*.yaml" ]
+    paths: [ "**.yml", "**.yaml" ]
   pull_request:
-    paths: [ "*.yml", "*.yaml" ]
+    paths: [ "**.yml", "**.yaml" ]
 
 jobs:
   yamllint:
