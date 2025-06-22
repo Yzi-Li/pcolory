@@ -32,7 +32,8 @@ class TestColorPrint(ColorPrintTest):
         with io.StringIO() as buf, redirect_stdout(buf):
             colorprint("Hello", "World", fg=fg, bg=bg, sep=", ", end="!\n!")
             out = buf.getvalue()
-        self.assertEqual(f"{fg_code}{bg_code}Hello, World!{RESET}\n{fg_code}{bg_code}!{RESET}", out)
+        self.assertEqual(f"{fg_code}{bg_code}Hello, World!{RESET}\n{fg_code}\
+                         {bg_code}!{RESET}", out)
 
         with io.StringIO() as buf, redirect_stdout(buf):
             colorprint("Hello", "World!", fg=fg, bg=bg, sep=", ", end=None)
