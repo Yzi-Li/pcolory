@@ -55,7 +55,7 @@ class Config:
     faint: OptionalBool = None
     italic: OptionalBool = None
     underline: OptionalBool = None
-    blink: bool = None
+    blink: OptionalBool = None
     inverse: OptionalBool = None
     conceal: OptionalBool = None
     crossed_out: OptionalBool = None
@@ -80,25 +80,27 @@ def get_code(cfg: Config) -> str:
 
     return code.replace("m\033[", ";")
 
+
 class ColorPrint:
     def __init__(self):
         self._config = Config()
 
-    def __call__(self,
-                 *values: object,
-                 fg: OptionalColor = None,
-                 bg: OptionalColor = None,
-                 bold: OptionalBool = None,
-                 faint: OptionalBool = None,
-                 italic: OptionalBool = None,
-                 underline: OptionalBool = None,
-                 blink: OptionalBool = None,
-                 inverse: OptionalBool = None,
-                 conceal: OptionalBool = None,
-                 crossed_out: OptionalBool = None,
-                 sep: OptionalStr = None,
-                 end: OptionalStr = None
-        ) -> None:
+    def __call__(
+            self,
+            *values: object,
+            fg: OptionalColor = None,
+            bg: OptionalColor = None,
+            bold: OptionalBool = None,
+            faint: OptionalBool = None,
+            italic: OptionalBool = None,
+            underline: OptionalBool = None,
+            blink: OptionalBool = None,
+            inverse: OptionalBool = None,
+            conceal: OptionalBool = None,
+            crossed_out: OptionalBool = None,
+            sep: OptionalStr = None,
+            end: OptionalStr = None
+    ) -> None:
 
         if not self._config.enable:
             print(*values, sep=sep, end=end)

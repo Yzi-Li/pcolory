@@ -13,9 +13,6 @@ lint:
 	mypy pcolory/ tests/
 
 test:
-	make clean
-	python -m build
-	pip install dist/*.whl
 	python -m unittest
 
 codecov:
