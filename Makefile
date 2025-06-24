@@ -9,13 +9,10 @@ install:
 	pip install .
 
 lint:
-	flake8 pcolory/ tests/ --max-line-length=120
+	flake8 pcolory/ tests/ --max-line-length=79
 	mypy pcolory/ tests/
 
 test:
-	make clean
-	python -m build
-	pip install dist/*.whl
 	python -m unittest
 
 codecov:

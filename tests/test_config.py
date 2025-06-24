@@ -7,12 +7,10 @@ from contextlib import redirect_stdout
 
 from .colorprinttest import ColorPrintTest
 from pcolory import config, colorprint
-from pcolory.colors import FG_BLACK, BG_RED, RESET
+from pcolory.colors import FG_BLACK, BG_RED
 
 fg = FG_BLACK
 bg = BG_RED
-fg_code = fg.code
-bg_code = bg.code
 
 
 class TestConfig(ColorPrintTest):
@@ -34,10 +32,10 @@ class TestConfig(ColorPrintTest):
             config(fg=fg, bg=bg)
             colorprint("Hello, World!")
             out = buf.getvalue()
-        self.assertEqual(f"{fg_code}{bg_code}Hello, World!{RESET}\n", out)
+        self.assertEqual("\033[30;41mHello, World!\033[0m\n", out)
 
         with io.StringIO() as buf, redirect_stdout(buf):
             config({"fg": fg, "bg": bg})
             colorprint("Hello, World!")
             out = buf.getvalue()
-        self.assertEqual(f"{fg_code}{bg_code}Hello, World!{RESET}\n", out)
+        self.assertEqual("\033[30;41mHello, World!\033[0m\n", out)
