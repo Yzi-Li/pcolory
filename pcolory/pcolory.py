@@ -1,8 +1,8 @@
 # Licensed under the Apache License: http://www.apache.org/licenses/LICENSE-2.0
 # For details: https://github.com/Yzi-Li/pcolory/blob/main/copyright.txt
 
+from typing import Dict, TypeAlias
 
-from typing import Dict
 from .colors import Color, RESET
 
 BOLD = "\033[1m"
@@ -14,11 +14,11 @@ INVERSE = "\033[7m"
 CONCEAL = "\033[8m"
 CROSSED_OUT = "\033[9m"
 
-type OptionalColor = Color | None
-type OptionalBool = bool | None
-type OptionalStr = str | None
-type ConfigValue = str | bool | Color | None
-type ConfigDict = Dict[str, ConfigValue]
+OptionalColor: TypeAlias = Color | None
+OptionalBool: TypeAlias = bool | None
+OptionalStr: TypeAlias = str | None
+ConfigValue: TypeAlias = str | bool | Color | None
+ConfigDict: TypeAlias = Dict[str, ConfigValue]
 
 DEFAULT_CONFIG: ConfigDict = {
     "enable": True,
