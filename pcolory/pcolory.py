@@ -17,7 +17,7 @@ CROSSED_OUT = "\033[9m"
 type OptionalColor = Color | None
 type OptionalBool = bool | None
 type OptionalStr = str | None
-type ConfigValue = bool | Color | None
+type ConfigValue = str | bool | Color | None
 type ConfigDict = Dict[str, ConfigValue]
 
 DEFAULT_CONFIG: ConfigDict = {
@@ -32,6 +32,7 @@ DEFAULT_CONFIG: ConfigDict = {
     "inverse": None,
     "conceal": None,
     "crossed_out": None,
+    "code": ""
 }
 
 
@@ -59,7 +60,7 @@ class Config:
     inverse: OptionalBool = None
     conceal: OptionalBool = None
     crossed_out: OptionalBool = None
-    _code: str = ""
+    code: str = ""
 
     def __init__(self, **kwargs):
         for key, val in kwargs.items():
@@ -73,7 +74,7 @@ def get_code(cfg: Config) -> str:
     code += cfg_dict["fg"].code if cfg_dict["fg"] is not None else ""
     code += cfg_dict["bg"].code if cfg_dict["bg"] is not None else ""
 
-    del cfg_dict["enable"], cfg_dict["fg"], cfg_dict["bg"]
+    del cfg_dict["enable"], cfg_dict["fg"], cfg_dict["bg"], cfg_dict["code"]
 
     for key, val in cfg_dict.items():
         code += DEFAULT_CONFIG_VALUES[key] if val else ""
@@ -164,4 +165,4 @@ class ColorPrint:
         for key, val in kwargs.items():
             self._config.__setattr__(key, val)
 
-        self._config.__setattr__("_code", get_code(self._config))
+        self._config.__setattr__("code", get_code(self._config))
