@@ -1,0 +1,23 @@
+name: Bug report
+description: Submit a bug report
+labels: ["bug"]
+
+body:
+  - type: textarea
+    attributes:
+      label: "Bug description"
+      description: A clear and concise description of what happened.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: "Steps to reproduce"
+      description: Steps to reproduce the behavior.
+
+  - type: textarea
+    attributes:
+      label: "Expected behavior"
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
