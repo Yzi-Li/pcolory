@@ -16,13 +16,13 @@ coverage:
         target: 100%
         threshold: 0%
         base: auto
-        branches: [ main ]
+        branches: [ "main" ]
     patch:
       default:
         target: 100%
         threshold: 0%
         base: auto
-        branches: [ main ]
+        branches: [ "main" ]
 
 comment:
   layout: "diff, flags, files"
