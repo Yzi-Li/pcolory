@@ -31,4 +31,5 @@ clean:
 	rm -rf .pytest_cache
 	rm -rf .coverage
 	rm -rf coverage.xml
+	rm -rf docs/build
 	pip uninstall -y pcolory
