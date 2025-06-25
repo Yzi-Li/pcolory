@@ -1,7 +1,7 @@
 codecov:
   bot: "codecov-io"
   ci: [ "github-actions" ]
-  strict_yaml_branch: "main"
+  strict_yaml_branch: false
   max_report_age: false
   disable_default_path_fixes: false
   require_ci_to_pass: true
