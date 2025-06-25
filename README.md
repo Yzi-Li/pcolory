@@ -1,7 +1,7 @@
 # pcolory
 
-[![build](https://github.com/Yzi-Li/pcolory/actions/workflows/build.yaml/badge.svg)](https://github.com/Yzi-Li/pcolory/actions)
-[![flake8](https://github.com/Yzi-Li/pcolory/actions/workflows/lint.yaml/badge.svg)](https://github.com/Yzi-Li/pcolory/actions?query=workflow%3ALint)
+[![build](https://github.com/Yzi-Li/pcolory/actions/workflows/build.yml/badge.svg)](https://github.com/Yzi-Li/pcolory/actions)
+[![flake8](https://github.com/Yzi-Li/pcolory/actions/workflows/lint.yml/badge.svg)](https://github.com/Yzi-Li/pcolory/actions?query=workflow%3ALint)
 [![coverage](https://img.shields.io/codecov/c/github/Yzi-Li/pcolory)](https://codecov.io/gh/Yzi-Li/pcolory)
 [![pypi](https://img.shields.io/pypi/v/pcolory.svg)](https://pypi.org/project/pcolory/)
 [![support-version](https://img.shields.io/pypi/pyversions/pcolory)](https://img.shields.io/pypi/pyversions/pcolory)
