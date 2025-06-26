@@ -26,8 +26,9 @@ jobs:
         run: python -m unittest
       - name: Run tests with coverage
         run: |
-          coverage run --source pcolory -m unittest
-          coverage xml
+          coverage run --source pcolory --parallel-mode -m unittest
+          coverage combine
+          coverage xml -i
         env:
           COVERAGE_RUN: True
       - name: Upload report to Codecov
