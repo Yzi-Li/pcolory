@@ -24,12 +24,10 @@ jobs:
         run: pip install -r requirements-dev.txt
       - name: Build dist and test with unittest
         run: python -m unittest
-      - name: Install coverage
-        run: pip install coverage
       - name: Run tests with coverage
         run: |
           coverage run --source pcolory -m unittest
-          coverage xml -i
+          coverage xml
         env:
           COVERAGE_RUN: True
       - name: Upload report to Codecov
