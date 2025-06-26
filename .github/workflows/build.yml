@@ -29,7 +29,6 @@ jobs:
       - name: Run tests with coverage
         run: |
           coverage run --source pcolory -m unittest
-          coverage combine
           coverage xml -i
         env:
           COVERAGE_RUN: True
