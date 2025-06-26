@@ -21,16 +21,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements-dev.txt
+        run: pip install -r requirements-dev.txt
       - name: Build dist and test with unittest
-        run: |
-          python -m build
-          pip install dist/*.whl
-          python -m unittest
-      - name: Install coverage
-        run: pip install coverage
+        run: python -m unittest
       - name: Run tests with coverage
         run: |
           coverage run --source pcolory --parallel-mode -m unittest
@@ -42,4 +35,5 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          slug: Yzi-Li/pcolory
           file: ./coverage.xml
