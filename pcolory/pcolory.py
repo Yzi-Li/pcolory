@@ -1,7 +1,7 @@
 # Licensed under the Apache License: http://www.apache.org/licenses/LICENSE-2.0
 # For details: https://github.com/Yzi-Li/pcolory/blob/main/copyright.txt
 
-from typing import Dict, TypeAlias
+from typing import Dict, Tuple, TypeAlias
 
 from .colors import Color, RESET
 
@@ -80,6 +80,11 @@ def get_code(cfg: Config) -> str:
         code += DEFAULT_CONFIG_VALUES[key] if val else ""
 
     return code.replace("m\033[", ";")
+
+
+def rgb(rgb_tuple: Tuple[int, int, int], is_bg: bool = False) -> Color:
+    color = Color(is_bg)
+    return color.rgb(rgb_tuple)
 
 
 class ColorPrint:

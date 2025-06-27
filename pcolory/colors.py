@@ -2,23 +2,30 @@
 # For details: https://github.com/Yzi-Li/pcolory/blob/main/copyright.txt
 
 
-from typing import Dict, List
+from copy import deepcopy
+from typing import Dict, List, Tuple
 
 
 class Color:
-    def __init__(self, code: int,
-                 is_bg: bool = False,
-                 bright: bool = False):
-        base: int = 30  # foreground colors
-        if is_bg:
-            base += 10  # background colors
-        if bright:
-            base += 60  # bright colors
-        self.code = f"\033[{base + code}m"
+    def __init__(self, is_bg: bool = False):
         self.is_bg = is_bg
 
+    def ansi(self, code: int, bright: bool = False) -> "Color":
+        base: int = 30 + self.is_bg * 10 + bright * 60
+        self.code = f"\033[{base + code}m"
+        return deepcopy(self)
 
-RESET = Color(-30).code  # \033[0m
+    def rgb(self, rgb_tuple: Tuple[int, int, int]) -> "Color":
+        base: int = 38 + self.is_bg * 10
+        r, g, b = rgb_tuple
+        self.code = f"\033[{base};2;{r};{g};{b}m"
+        return deepcopy(self)
+
+
+fg_color = Color()
+bg_color = Color(True)
+
+RESET: str = fg_color.ansi(-30).code  # \033[0m
 
 color_names: List[str] = [
     "BLACK",
@@ -33,11 +40,11 @@ color_names: List[str] = [
 
 COLORS: Dict[str, Color] = {}
 
-for i, name in enumerate(color_names):
-    COLORS[f"FG_{name}"] = Color(i)
-    COLORS[f"FG_BRIGHT_{name}"] = Color(i, bright=True)
-    COLORS[f"BG_{name}"] = Color(i, is_bg=True)
-    COLORS[f"BG_BRIGHT_{name}"] = Color(i, True, True)
+for code, name in enumerate(color_names):
+    COLORS[f"FG_{name}"] = fg_color.ansi(code)
+    COLORS[f"FG_BRIGHT_{name}"] = fg_color.ansi(code, True)
+    COLORS[f"BG_{name}"] = bg_color.ansi(code)
+    COLORS[f"BG_BRIGHT_{name}"] = bg_color.ansi(code, True)
 
 # Foreground colors
 FG_BLACK = COLORS["FG_BLACK"]

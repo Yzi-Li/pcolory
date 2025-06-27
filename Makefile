@@ -1,6 +1,6 @@
 .PHONY: refresh build lint install test codecov clean
 
-refresh: clean build lint install test codecov
+refresh: build lint install test codecov clean
 
 build:
 	python -m build
@@ -16,7 +16,8 @@ test:
 	python -m unittest
 
 codecov:
-	coverage run --source pcolory -m unittest
+	coverage run --source pcolory --parallel-mode -m unittest
+	coverage combine
 	coverage report -m
 
 clean:

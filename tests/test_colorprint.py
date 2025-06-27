@@ -6,7 +6,7 @@ import io
 from contextlib import redirect_stdout
 
 from .colorprinttest import ColorPrintTest
-from pcolory import colorprint
+from pcolory import colorprint, rgb
 from pcolory.colors import FG_BLACK, BG_RED
 
 fg = FG_BLACK
@@ -45,3 +45,9 @@ class TestColorPrint(ColorPrintTest):
 
         with self.assertRaises(ValueError):
             colorprint("Hello, World!", bg=fg)
+
+    def test_rgb(self):
+        with io.StringIO() as buf, redirect_stdout(buf):
+            colorprint("Hello, World!", fg=rgb((255, 0, 0)))
+            out = buf.getvalue()
+        self.assertEqual("\033[38;2;255;0;0mHello, World!\033[0m\n", out)
