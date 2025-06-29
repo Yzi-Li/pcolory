@@ -2,7 +2,7 @@
 # For details: https://github.com/Yzi-Li/pcolory/blob/main/copyright.txt
 
 
-from .pcolory import ColorPrint, rgb
+from .pcolory import ColorPrint, color
 
 __version__ = "0.1.2"
 
@@ -10,7 +10,7 @@ __all__ = [
     "cp",
     "colorprint",
     "config",
-    "rgb"
+    "color"
 ]
 
 _colorprint = ColorPrint()
