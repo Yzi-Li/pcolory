@@ -2,14 +2,15 @@
 # For details: https://github.com/Yzi-Li/pcolory/blob/main/copyright.txt
 
 
-from .pcolory import ColorPrint
+from .pcolory import ColorPrint, color
 
 __version__ = "0.1.2"
 
 __all__ = [
     "cp",
     "colorprint",
-    "config"
+    "config",
+    "color"
 ]
 
 _colorprint = ColorPrint()

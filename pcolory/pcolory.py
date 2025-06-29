@@ -1,7 +1,7 @@
 # Licensed under the Apache License: http://www.apache.org/licenses/LICENSE-2.0
 # For details: https://github.com/Yzi-Li/pcolory/blob/main/copyright.txt
 
-from typing import Dict, TypeAlias
+from typing import Dict, Literal, Tuple, TypeAlias
 
 from .colors import Color, RESET
 
@@ -71,8 +71,8 @@ def get_code(cfg: Config) -> str:
     code = ""
     cfg_dict = DEFAULT_CONFIG | cfg.__dict__
 
-    code += cfg_dict["fg"].code if cfg_dict["fg"] is not None else ""
-    code += cfg_dict["bg"].code if cfg_dict["bg"] is not None else ""
+    code += cfg_dict["fg"].fg if cfg_dict["fg"] is not None else ""
+    code += cfg_dict["bg"].bg if cfg_dict["bg"] is not None else ""
 
     del cfg_dict["enable"], cfg_dict["fg"], cfg_dict["bg"], cfg_dict["code"]
 
@@ -80,6 +80,31 @@ def get_code(cfg: Config) -> str:
         code += DEFAULT_CONFIG_VALUES[key] if val else ""
 
     return code.replace("m\033[", ";")
+
+
+def color(
+    mode: Literal["rgb", "hex"],
+    value: Tuple[int, int, int] | str,
+) -> Color:
+    _color = Color()
+    if mode == "rgb":
+        if isinstance(value, tuple):
+            return _color.rgb(value)
+        raise ValueError(f"Expected tuple, got {type(value).__name__}")
+    elif mode == "hex":
+        if isinstance(value, str):
+            value = value.lstrip("#")
+            if len(value) == 3:
+                value = "".join([i * 2 for i in value])
+            return _color.rgb(
+                tuple(
+                    int(value[i:i+2], 16)
+                    for i in (0, 2, 4)
+                )  # type: ignore[arg-type]
+            )
+        raise ValueError(f"Expected str, got {type(value).__name__}")
+    else:
+        raise ValueError("mode must be 'rgb' or 'hex'")
 
 
 class ColorPrint:
@@ -106,15 +131,6 @@ class ColorPrint:
         if not self._config.enable:
             print(*values, sep=sep, end=end)
             return
-
-        if fg is not None and fg.is_bg:
-            raise ValueError(
-                "fg must be foreground color, not background color."
-            )
-        if bg is not None and not bg.is_bg:
-            raise ValueError(
-                "bg must be background color, not foreground color."
-            )
 
         fg = fg or self._config.fg
         bg = bg or self._config.bg

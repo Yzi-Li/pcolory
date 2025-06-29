@@ -7,10 +7,10 @@ from contextlib import redirect_stdout
 
 from .colorprinttest import ColorPrintTest
 from pcolory import config, colorprint
-from pcolory.colors import FG_BLACK, BG_RED
+from pcolory.colors import BLACK, RED
 
-fg = FG_BLACK
-bg = BG_RED
+fg = BLACK
+bg = RED
 
 
 class TestConfig(ColorPrintTest):
